@@ -16,7 +16,7 @@ bot.onText(/\/start/, (msg) => {
                     {
                         text: 'Open Web App',
                         web_app: {
-                            url: 'https://fitcoin.vercel.app/',  // Replace with your React app URL
+                            url: 'https://telegram-web-app-mocha.vercel.app/',  // Replace with your React app URL
                         },
                     },
                 ],

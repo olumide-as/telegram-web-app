@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import { Taskcard1 } from "../Components";
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <div>
+      {/* Section 1 */}
+      <section className="p-4">
+        <div className="grid grid-cols-3 gap-4">
 
-export default Home
+          <Taskcard1 /><Taskcard1 /><Taskcard1 />
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
