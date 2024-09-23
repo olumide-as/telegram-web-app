@@ -12,6 +12,10 @@ const Home = () => {
           <Taskcard1 image={trophy} text="Special Task" points='+21000 $AIDOGS' btext="Start"  />
           <Taskcard1 image={game} text="Play Mini Games"  btext="Play"  />
         </div>
+
+        <div>
+          
+        </div>
       </section>
     </div>
   );
