@@ -5,7 +5,7 @@ const Taskcard1 = () => {
     <div className='border border-amber-400 rounded-xl text-white'>
       <div className='p-2'>
       <p>Daily Check-in</p>
-      <p>+15000 $AIDOGS</p>
+      <p className='text-amber-400'>+15000 $AIDOGS</p>
       </div>
     <button className='bg-amber-400 w-full rounded-b-xl'>claim</button>
 
