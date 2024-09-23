@@ -8,9 +8,9 @@ const Home = () => {
       {/* Section 1 */}
       <section className="p-8">
         <div className="grid grid-cols-3 gap-4">
-          <Taskcard1 image={schedule} text="Daily Check-in" points='+15000 $AIDOGS' btext="claim"  />
-          <Taskcard1 image={trophy} text="Special Task" points='+21000 $AIDOGS' btext="claim"  />
-          <Taskcard1 image={game} text="Play Mini Games"  btext="claim"  />
+          <Taskcard1 image={schedule} text="Daily Check-in" points='+15000 $AIDOGS' btext="Claim"  />
+          <Taskcard1 image={trophy} text="Special Task" points='+21000 $AIDOGS' btext="Start"  />
+          <Taskcard1 image={game} text="Play Mini Games"  btext="Play"  />
         </div>
       </section>
     </div>
