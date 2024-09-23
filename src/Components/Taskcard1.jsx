@@ -1,15 +1,14 @@
 import React from 'react'
-import { schedule } from '../Assets'
 
-const Taskcard1 = () => {
+const Taskcard1 = ({image, text, points, btext}) => {
   return (
     <div className='border border-amber-400 rounded-xl text-white'>
       <div className='p-2'>
-        <img src={schedule} alt="card image" className='m-auto w-8'/>
-      <p className='text-sm'>Daily Check-in</p>
-      <p className='text-amber-400 text-sm'>+15000 $AIDOGS</p>
+        <img src={image} alt="card image" className='m-auto w-12 my-2'/>
+      <p className='text-sm'>{text}</p>
+      <p className='text-[#FEC95E] text-xs'>{points} </p>
       </div>
-    <button className='bg-amber-400 w-full rounded-b-xl'>claim</button>
+    <button className=' bg-gradient-to-b from-[#F0D377] to-[#F1A35F] text-[#210133] w-full rounded-b-xl'>{btext}</button>
 
     </div>
   )

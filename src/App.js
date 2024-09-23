@@ -20,7 +20,7 @@ function App() {
 }, []);
   
   return (
-    <div className="App scroll-smooth bg-fuchsia-950">
+    <div className="App scroll-smooth bg-[#210133]">
               <div style={{ padding: '20px', textAlign: 'center' }}>
             <h1>Welcome to the Telegram Web App</h1>
             {user?.username ? (
