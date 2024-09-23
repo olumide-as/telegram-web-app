@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       {/* Section 1 */}
-      <section className="p-4">
+      <section className="p-8">
         <div className="grid grid-cols-3 gap-4">
 
           <Taskcard1 /><Taskcard1 /><Taskcard1 />
