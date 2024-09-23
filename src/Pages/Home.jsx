@@ -4,7 +4,7 @@ import { game, schedule, trophy } from "../Assets";
 
 const Home = () => {
   return (
-    <div>
+    <div className="h-screen">
       {/* Section 1 */}
       <section className="p-8">
         <div className="grid grid-cols-3 gap-4">
