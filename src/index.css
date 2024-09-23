@@ -1,13 +1,29 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+font-face {
+    font-family: "Nasa";
+    src: url("Fonts/nasalization-rg.otf");
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: "Raleway";
+    src: url("Fonts/Raleway.ttf");
+    font-weight: normal;
+  }
+
+
+
+  :root {
+    font-family: 'Nasa'; 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+p, label, select{
+  font-family: "Raleway";
+  letter-spacing: 1 px;
 }
+*/
+
