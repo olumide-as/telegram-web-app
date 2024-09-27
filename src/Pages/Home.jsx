@@ -76,6 +76,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Section 3 */}
+      <section>
+
+      </section>
     </div>
   );
 };
