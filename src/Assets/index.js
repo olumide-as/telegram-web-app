@@ -9,4 +9,5 @@ export {default as telegram} from './telegram.png';
 export {default as xtwitter} from './xtwitter.png';
 export {default as youtube} from './youtube.png';
 export {default as dog} from './dog.jpeg';
+export {default as logo} from './logo.png';
 

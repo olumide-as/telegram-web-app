@@ -1,8 +1,15 @@
-import React from "react";
-import { Button1, DailyTask, ImageCard1, Taskcard1, Taskcard2 } from "../Components";
+import React, { useEffect, useState } from "react";
+import {
+  Button1,
+  DailyTask,
+  ImageCard1,
+  Taskcard1,
+  Taskcard2,
+} from "../Components";
 import {
   dog,
   game,
+  logo,
   schedule,
   telegram,
   trophy,
@@ -11,8 +18,42 @@ import {
 } from "../Assets";
 
 const Home = () => {
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    // Ensure the Telegram Web App object is available
+    const tg = window.Telegram.WebApp;
+
+    // Initialize Web App with data from Telegram
+    setUser(tg.initDataUnsafe?.user || {});
+
+    // Expand the Web App to full screen inside Telegram
+    tg.expand();
+  }, []);
+
   return (
     <div className="h-full py-8">
+      <div className="p-2 flex justify-around">
+      <div><img src={logo} alt="AIDOGS Logo" /></div>
+      <div className="text-white">
+        <p>Welcome </p>
+        {user?.username ? (
+          <p>
+            Hello, {user.first_name} (@{user.username})!
+          </p>
+        ) : (
+          <p>Welcome, guest!</p>
+        )}
+        <p className="text-2xl">
+          50,075 <span className="text-[#FEC95E]">$AIDOGS</span>
+        </p>
+      </div>
+      <button className="bg-[#3F015F] text-white px-8 py-2 h-8 rounded-lg">
+        Connect Wallet
+      </button>
+      </div>
+
+      
+
       {/* Section 1 */}
       <section className="p-4 space-y-4">
         <div className="grid grid-cols-3 gap-4">
@@ -80,11 +121,36 @@ const Home = () => {
       {/* Section 3 */}
       <section className="p-4">
         <p className="text-white text-sm text-left p-4 ">Daily Tasks</p>
-        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
-        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
-        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
-        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
-        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
+        <DailyTask
+          logo={youtube}
+          title="Watch video on Youtube"
+          text="+1,000 $AIDOGS"
+          buttontext="Start"
+        />
+        <DailyTask
+          logo={youtube}
+          title="Watch video on Youtube"
+          text="+1,000 $AIDOGS"
+          buttontext="Start"
+        />
+        <DailyTask
+          logo={youtube}
+          title="Watch video on Youtube"
+          text="+1,000 $AIDOGS"
+          buttontext="Start"
+        />
+        <DailyTask
+          logo={youtube}
+          title="Watch video on Youtube"
+          text="+1,000 $AIDOGS"
+          buttontext="Start"
+        />
+        <DailyTask
+          logo={youtube}
+          title="Watch video on Youtube"
+          text="+1,000 $AIDOGS"
+          buttontext="Start"
+        />
       </section>
     </div>
   );
