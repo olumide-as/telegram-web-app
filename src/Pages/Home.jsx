@@ -49,9 +49,31 @@ const Home = () => {
         </div>
 
         <div>
-          <Taskcard2 logo={xtwitter} text="RT & Tag 3 Frens" buttontext="Do"/>
-          <Taskcard2 logo={xtwitter} text="Tweet your Boost Key" buttontext="Do"/>
-          <Taskcard2 logo={xtwitter} text="Post an Instagram Story" buttontext="Do"/>
+          <Taskcard2 logo={xtwitter} text="RT & Tag 3 Frens" buttontext="Do" />
+          <Taskcard2
+            logo={xtwitter}
+            text="Tweet your Boost Key"
+            buttontext="Do"
+          />
+          <Taskcard2
+            logo={xtwitter}
+            text="Post an Instagram Story"
+            buttontext="Do"
+          />
+        </div>
+
+        <div>
+          <div className="flex space-x-4 w-full">
+            {/* First button - Inactive with transparent background and white border */}
+            <button className="flex items-center justify-center px-4 py-2 border border-white text-white rounded-lg">
+              1,092,393 Participants
+            </button>
+
+            {/* Second button - Participate with white background and custom text color */}
+            <button className="flex-grow bg-white text-[#160023] px-6 py-2 rounded-lg">
+              Participate
+            </button>
+          </div>
         </div>
       </section>
     </div>
