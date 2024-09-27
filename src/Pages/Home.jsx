@@ -12,7 +12,7 @@ import {
 
 const Home = () => {
   return (
-    <div className="h-screen">
+    <div className="h-full">
       {/* Section 1 */}
       <section className="p-8 space-y-4">
         <div className="grid grid-cols-3 gap-4">

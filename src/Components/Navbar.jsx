@@ -4,7 +4,7 @@ import { handshake, home, mission, podium } from '../Assets'
 
 const Navbar = () => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-[#160023] shadow-md border-t border-gray-200 text-white">
+    <div className="fixed bottom-0 left-0 right-0 bg-[#160023] shadow-md border-t border-gray-200 text-white z-30">
       <div className="flex justify-around items-center p-2">
         <div className="flex flex-col items-center">
           <img src={home} alt="Home" className="w-8 h-8" />
