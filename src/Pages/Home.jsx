@@ -32,20 +32,19 @@ const Home = () => {
 
   return (
     <div className="h-full py-8">
-
-    {/* Section Header */}
+      {/* Section Header */}
       <section>
-      <div className="py-4  flex justify-around">
-        <div>
-          <img src={logo} alt="AIDOGS Logo" />
+        <div className="py-4  flex justify-around">
+          <div>
+            <img src={logo} alt="AIDOGS Logo" />
+          </div>
+
+          <button className="bg-[#3F015F] text-white px-8 py-2 h-8 rounded-lg">
+            Connect Wallet
+          </button>
         </div>
 
-        <button className="bg-[#3F015F] text-white px-8 py-2 h-8 rounded-lg">
-          Connect Wallet
-        </button>
-      </div>
-
-      <div className="text-white">
+        <div className="text-white">
           <p>Welcome </p>
           {user?.username ? (
             <p>
@@ -59,7 +58,6 @@ const Home = () => {
           </p>
         </div>
       </section>
-
 
       {/* Section 1 */}
       <section className="p-4 space-y-4">
@@ -135,10 +133,11 @@ const Home = () => {
           buttontext="Start"
         />
         <DailyTask
-          logo={youtube}
-          title="Watch video on Youtube"
+          logo={telegram}
+          title="Post on Telegram status"
           text="+1,000 $AIDOGS"
           buttontext="Start"
+          shareUrl="https://t.me/share/url?url=https://res.cloudinary.com/dz2fc3ioz/video/upload/v1708265446/Blastarians_nr0sus.mp4&text=Check%20out%20this%20cool%20video%20and%20share%20it%20to%20your%20Telegram%20status!"
         />
         <DailyTask
           logo={youtube}
