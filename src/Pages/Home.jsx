@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className="h-full">
       {/* Section 1 */}
-      <section className="p-8 space-y-4">
+      <section className="p-4 space-y-4">
         <div className="grid grid-cols-3 gap-4">
           <Taskcard1
             image={schedule}
@@ -39,7 +39,7 @@ const Home = () => {
       </section>
 
       {/* Section 2 */}
-      <section className="p-8 bg-[#160023] m-8 rounded-2xl">
+      <section className="p-4 bg-[#160023] m-2 rounded-2xl">
         <div>
           <ImageCard1
             image={dog}
