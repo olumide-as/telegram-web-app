@@ -1,5 +1,5 @@
 import React from "react";
-import { Button1, ImageCard1, Taskcard1, Taskcard2 } from "../Components";
+import { Button1, DailyTask, ImageCard1, Taskcard1, Taskcard2 } from "../Components";
 import {
   dog,
   game,
@@ -12,7 +12,7 @@ import {
 
 const Home = () => {
   return (
-    <div className="h-full">
+    <div className="h-full py-8">
       {/* Section 1 */}
       <section className="p-4 space-y-4">
         <div className="grid grid-cols-3 gap-4">
@@ -78,8 +78,13 @@ const Home = () => {
       </section>
 
       {/* Section 3 */}
-      <section>
-
+      <section className="p-4">
+        <p className="text-white text-sm text-left p-4 ">Daily Tasks</p>
+        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
+        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
+        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
+        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
+        <DailyTask logo={youtube} title="Watch video on Youtube" text='+1,000 $AIDOGS' buttontext="Start"/>
       </section>
     </div>
   );
