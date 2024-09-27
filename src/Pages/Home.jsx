@@ -32,27 +32,34 @@ const Home = () => {
 
   return (
     <div className="h-full py-8">
-      <div className="p-2 flex justify-around">
-      <div><img src={logo} alt="AIDOGS Logo" /></div>
-      <div className="text-white">
-        <p>Welcome </p>
-        {user?.username ? (
-          <p>
-            Hello, {user.first_name} (@{user.username})!
-          </p>
-        ) : (
-          <p>Welcome, guest!</p>
-        )}
-        <p className="text-2xl">
-          50,075 <span className="text-[#FEC95E]">$AIDOGS</span>
-        </p>
-      </div>
-      <button className="bg-[#3F015F] text-white px-8 py-2 h-8 rounded-lg">
-        Connect Wallet
-      </button>
+
+    {/* Section Header */}
+      <section>
+      <div className="py-4  flex justify-around">
+        <div>
+          <img src={logo} alt="AIDOGS Logo" />
+        </div>
+
+        <button className="bg-[#3F015F] text-white px-8 py-2 h-8 rounded-lg">
+          Connect Wallet
+        </button>
       </div>
 
-      
+      <div className="text-white">
+          <p>Welcome </p>
+          {user?.username ? (
+            <p>
+              Hello, {user.first_name} (@{user.username})!
+            </p>
+          ) : (
+            <p>Welcome, guest!</p>
+          )}
+          <p className="text-2xl">
+            50,075 <span className="text-[#FEC95E]">$AIDOGS</span>
+          </p>
+        </div>
+      </section>
+
 
       {/* Section 1 */}
       <section className="p-4 space-y-4">
