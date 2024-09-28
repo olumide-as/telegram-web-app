@@ -4,6 +4,7 @@ import "./App.css";
 import { BackTop } from "antd";
 import { Footer, Navbar } from "./Components";
 import { Home, NoPage } from "./Pages";
+import TelegramAuth from './Components/TelegramAuth';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   
   return (
     <div className="App scroll-smooth bg-[#210133] text-xs">
+      <TelegramAuth/>
 
         <BrowserRouter>
         <Navbar />
