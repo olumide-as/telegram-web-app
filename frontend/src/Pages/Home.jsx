@@ -20,7 +20,7 @@ import {
 const Home = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
-    // Ensure the Telegram Web App object is available
+    // Ensure the Telegram Web App object is available .
     const tg = window.Telegram.WebApp;
 
     // Initialize Web App with data from Telegram
