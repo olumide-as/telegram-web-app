@@ -5,4 +5,5 @@ export {default as Button1} from './Button1';
 export {default as ImageCard1} from './ImageCard1';
 export {default as Taskcard2} from './Taskcard2';
 export {default as DailyTask} from './DailyTask';
+export {default as UserList} from './UserList';
 

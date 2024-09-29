@@ -5,6 +5,7 @@ import {
   ImageCard1,
   Taskcard1,
   Taskcard2,
+  UserList,
 } from "../Components";
 import {
   dog,
@@ -162,6 +163,8 @@ const Home = () => {
           buttontext="Start"
         />
       </section>
+
+      <UserList/>
     </div>
   );
 };
