@@ -28,7 +28,7 @@ bot.onText(/\/start/, async (msg) => {
     }
 
     // Create the formatted mention
-    const mention = username ? `<a href="tg://user?id=${userId}">@${username}</a>` : "User";
+    const mention = username ? `<a href="tg://user?id=${userId}">@${username} <span>${firstName}</span></a>` : "User";
 
     // Send a message with a button that launches the Web App
     bot.sendMessage(chatId, `Welcome to AIDogs, ${mention}! The AIDogs portal is live for dog lovers to have fun and earn rewards.`, {
