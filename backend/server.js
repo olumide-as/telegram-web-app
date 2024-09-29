@@ -17,11 +17,8 @@ app.use('/api/users', userRoutes);
 // MongoDB connection setup with proper error handling
 const connectDB = async () => {
   try {
-    // MongoDB connection
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    // MongoDB connection without deprecated options
+    await mongoose.connect(process.env.MONGO_URI);
 
     console.log('MongoDB connected successfully');
 

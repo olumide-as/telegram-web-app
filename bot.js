@@ -2,7 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
 
 // Replace with your bot token
-const token = 'YOUR_TELEGRAM_BOT_TOKEN';
+const token = '8169568541:AAGsbcwEEqUfM60aKzW3lyZpD4Jq5yefHUA';
 const bot = new TelegramBot(token, { polling: true });
 
 // Start command
@@ -10,22 +10,19 @@ bot.onText(/\/start/, async (msg) => {
     const chatId = msg.chat.id;
 
     // Retrieve user info
-    const username = msg.from.username;
-    const userId = msg.from.id;
-    const firstName = msg.from.first_name || '';
-    const lastName = msg.from.last_name || '';
+    const { username, id: userId, first_name: firstName, last_name: lastName } = msg.from;
 
     // Send user data to the backend for registration
     try {
         await axios.post('https://your-backend-api.com/api/users/register', {
             telegramId: userId,
-            firstName: firstName,
-            lastName: lastName,
-            username: username,
+            firstName: firstName || '',
+            lastName: lastName || '',
+            username: username || '',
         });
         console.log('User registration successful');
     } catch (error) {
-        console.error('Error registering user:', error);
+        console.error('Error registering user:', error.message || error);
     }
 
     // Create the formatted mention
