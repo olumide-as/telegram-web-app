@@ -24,6 +24,9 @@ const Home = () => {
     // Ensure the Telegram Web App object is available
     const tg = window.Telegram.WebApp;
 
+    // Log the raw Telegram user data
+    console.log('Telegram user data:', tg.initDataUnsafe?.user); // Add this line
+
     // Initialize Web App with data from Telegram
     setUser(tg.initDataUnsafe?.user || {});
 

@@ -4,7 +4,7 @@ const Taskcard1 = ({ image, text, points, btext }) => {
   return (
     <div className="flex flex-col justify-between h-full border border-amber-400 rounded-xl text-white">
       <div className="p-2">
-        <img src={image} alt="card image" className="m-auto w-12 my-2" />
+        <img src={image} alt="card-image" className="m-auto w-12 my-2" />
         <p className="text-sm">{text}</p>
         <p className="text-[#FEC95E] text-xs">{points} </p>
       </div>
