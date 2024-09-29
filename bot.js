@@ -14,15 +14,17 @@ bot.onText(/\/start/, async (msg) => {
 
     // Send user data to the backend for registration
     try {
-        await axios.post('https://your-backend-api.com/api/users/register', {
+        const response = await axios.post('http://localhost:5001/api/users/register', {
             telegramId: userId,
             firstName: firstName || '',
             lastName: lastName || '',
             username: username || '',
         });
-        console.log('User registration successful');
+        console.log('User registration successful:', response.data);
     } catch (error) {
         console.error('Error registering user:', error.message || error);
+        // Optionally, inform the user about the error
+        bot.sendMessage(chatId, 'Sorry, there was an error registering you. Please try again later.');
     }
 
     // Create the formatted mention
