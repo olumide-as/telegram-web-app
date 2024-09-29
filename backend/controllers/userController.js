@@ -12,9 +12,6 @@ exports.registerUser = async (req, res) => {
     }
 
     try {
-        // Log the incoming request body for debugging
-        console.log('Received registration data:', req.body);
-
         // Check if the user already exists
         let user = await User.findOne({ telegramId });
 
@@ -25,7 +22,7 @@ exports.registerUser = async (req, res) => {
                 firstName,
                 lastName,
                 username,
-                points: 0,  // Initialize points (optional, based on your business logic)
+                points: 0,  // Initialize points (optional)
             });
 
             // Save the user to the database
@@ -48,6 +45,18 @@ exports.registerUser = async (req, res) => {
         });
     } catch (error) {
         console.error('Error registering user:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+// Function to get sorted users
+exports.getUsers = async (req, res) => {
+    try {
+        // Fetch users sorted by firstName (you can change this to any field)
+        const users = await User.find().sort({ firstName: 1 });  // Ascending order
+        res.status(200).json(users);
+    } catch (error) {
+        console.error('Error fetching users:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
 };
