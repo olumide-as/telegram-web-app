@@ -1,16 +1,32 @@
 const TelegramBot = require('node-telegram-bot-api');
+const axios = require('axios');
 
 // Replace with your bot token
-const token = '8169568541:AAGsbcwEEqUfM60aKzW3lyZpD4Jq5yefHUA';
+const token = 'YOUR_TELEGRAM_BOT_TOKEN';
 const bot = new TelegramBot(token, { polling: true });
 
 // Start command
-bot.onText(/\/start/, (msg) => {
+bot.onText(/\/start/, async (msg) => {
     const chatId = msg.chat.id;
 
     // Retrieve user info
-    const username = msg.from.username; // Get the username
-    const userId = msg.from.id; // Get the user ID
+    const username = msg.from.username;
+    const userId = msg.from.id;
+    const firstName = msg.from.first_name || '';
+    const lastName = msg.from.last_name || '';
+
+    // Send user data to the backend for registration
+    try {
+        await axios.post('https://your-backend-api.com/api/users/register', {
+            telegramId: userId,
+            firstName: firstName,
+            lastName: lastName,
+            username: username,
+        });
+        console.log('User registration successful');
+    } catch (error) {
+        console.error('Error registering user:', error);
+    }
 
     // Create the formatted mention
     const mention = username ? `<a href="tg://user?id=${userId}">@${username}</a>` : "User";
@@ -29,7 +45,7 @@ bot.onText(/\/start/, (msg) => {
                 ],
             ],
         },
-        parse_mode: 'HTML', // Enable HTML parsing
+        parse_mode: 'HTML', // Enable HTML parsing for clickable username
     });
 });
 

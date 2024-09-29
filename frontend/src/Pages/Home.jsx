@@ -19,8 +19,9 @@ import {
 
 const Home = () => {
   const [user, setUser] = useState({});
+
   useEffect(() => {
-    // Ensure the Telegram Web App object is available .
+    // Ensure the Telegram Web App object is available
     const tg = window.Telegram.WebApp;
 
     // Initialize Web App with data from Telegram
@@ -34,7 +35,7 @@ const Home = () => {
     <div className="h-full py-8">
       {/* Section Header */}
       <section>
-        <div className="py-4  flex justify-around">
+        <div className="py-4 flex justify-around">
           <div>
             <img src={logo} alt="AIDOGS Logo" />
           </div>
