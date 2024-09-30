@@ -45,26 +45,31 @@ const Home = () => {
     tg.expand();
   }, []);
 
-  // Function to fetch user data from the backend
-  const fetchUserData = async (telegramId) => {
-    try {
-      const response = await axios.get(`http://localhost:5001/api/users/${telegramId}`); // Use your actual backend URL
-      
-      // Log the entire response for debugging
-      console.log('User data response:', response.data);
-      
-      const user = response.data.user; // Extract the user object
-      if (!user) {
-        throw new Error('User data is undefined'); // Handle case where user is not found
-      }
+// Function to fetch user data from the backend
+const fetchUserData = async (telegramId) => {
+  try {
+    const response = await axios.get(`http://localhost:5001/api/users/${telegramId}`); // Use your actual backend URL
 
-      const { points } = user; // Destructure points from user
-      setUserPoints(points); // Update user's points from backend
-      console.log('Updated user points:', points); // Log points after update
-    } catch (error) {
-      console.error('Error fetching user data:', error); // Log any errors
-    }
-  };
+    // Log the entire response for debugging
+    console.log('User data response:', response.data);
+
+    // Directly destructure properties from the response data
+    const { points, firstName, lastName, username } = response.data;
+
+    // Update state with user information
+    setUser({
+      first_name: firstName,
+      last_name: lastName,
+      username: username,
+      telegramId: telegramId
+    });
+
+    setUserPoints(points); // Update user's points from backend
+    console.log('Updated user points:', points); // Log points after update
+  } catch (error) {
+    console.error('Error fetching user data:', error); // Log any errors
+  }
+};
 
   return (
     <div className="h-full py-8">
