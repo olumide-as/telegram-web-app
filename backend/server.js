@@ -4,6 +4,8 @@ const cors = require('cors'); // Import the cors module for handling CORS
 const userRoutes = require('./routes/userRoutes');
 const connectDB = require('./db'); // Import the connectDB function
 const mongoose = require('mongoose'); // Import mongoose for connection handling
+const bot = require('./bots/bot'); // Import your bot logic
+
 
 const app = express();
 
@@ -23,6 +25,9 @@ app.use('/api/users', userRoutes); // Mount user routes
 
 // Connect to MongoDB
 connectDB();
+
+// Initialize your bot (if needed)
+bot.start(); // or whatever initialization method you have
 
 // Server listen
 const PORT = process.env.PORT || 5001;
