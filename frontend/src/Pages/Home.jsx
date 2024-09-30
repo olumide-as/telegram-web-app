@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux'; // Import Redux hooks
 import axios from 'axios'; // Import axios to fetch user data
+import { setUserInfo, setUserPoints } from '../Redux/userSlice'; // Import actions
 import {
   Button1,
   DailyTask,
@@ -20,8 +22,9 @@ import {
 } from "../Assets";
 
 const Home = () => {
-  const [user, setUser] = useState({});
-  const [userPoints, setUserPoints] = useState(0); // New state for user's points
+  const dispatch = useDispatch(); // Initialize the dispatch function
+  const user = useSelector((state) => state.user.userInfo); // Get user info from Redux state
+  const userPoints = useSelector((state) => state.user.userPoints); // Get user points from Redux state
 
   useEffect(() => {
     // Ensure the Telegram Web App object is available
@@ -34,7 +37,7 @@ const Home = () => {
     const telegramUser = tg.initDataUnsafe?.user || {};
 
     // Set user from Telegram WebApp
-    setUser(telegramUser);
+    dispatch(setUserInfo(telegramUser)); // Dispatch user data to Redux
 
     // Fetch user data from backend by telegramId
     if (telegramUser.id) {
@@ -43,33 +46,33 @@ const Home = () => {
 
     // Expand the Web App to full screen inside Telegram
     tg.expand();
-  }, []);
+  }, [dispatch]); // Add dispatch to the dependency array
 
-// Function to fetch user data from the backend
-const fetchUserData = async (telegramId) => {
-  try {
-    const response = await axios.get(`http://localhost:5001/api/users/${telegramId}`); // Use your actual backend URL
+  // Function to fetch user data from the backend
+  const fetchUserData = async (telegramId) => {
+    try {
+      const response = await axios.get(`http://localhost:5001/api/users/${telegramId}`); // Use your actual backend URL
 
-    // Log the entire response for debugging
-    console.log('User data response:', response.data);
+      // Log the entire response for debugging
+      console.log('User data response:', response.data);
 
-    // Directly destructure properties from the response data
-    const { points, firstName, lastName, username } = response.data;
+      // Directly destructure properties from the response data
+      const { points, firstName, lastName, username } = response.data;
 
-    // Update state with user information
-    setUser({
-      first_name: firstName,
-      last_name: lastName,
-      username: username,
-      telegramId: telegramId
-    });
+      // Update state with user information
+      dispatch(setUserInfo({
+        first_name: firstName,
+        last_name: lastName,
+        username: username,
+        telegramId: telegramId
+      }));
 
-    setUserPoints(points); // Update user's points from backend
-    console.log('Updated user points:', points); // Log points after update
-  } catch (error) {
-    console.error('Error fetching user data:', error); // Log any errors
-  }
-};
+      dispatch(setUserPoints(points)); // Dispatch points update to Redux
+      console.log('Updated user points:', points); // Log points after update
+    } catch (error) {
+      console.error('Error fetching user data:', error); // Log any errors
+    }
+  };
 
   return (
     <div className="h-full py-8">
