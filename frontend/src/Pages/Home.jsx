@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'; // Import Redux hooks
 import axios from 'axios'; // Import axios to fetch user data
-import { setUserInfo, setUserPoints } from '../Redux/userSlice'; // Import actions
+import { setUser, setPoints } from '../Redux/userSlice'; // Import actions
 import {
   Button1,
   DailyTask,
@@ -23,8 +23,8 @@ import {
 
 const Home = () => {
   const dispatch = useDispatch(); // Initialize the dispatch function
-  const user = useSelector((state) => state.user.userInfo); // Get user info from Redux state
-  const userPoints = useSelector((state) => state.user.userPoints); // Get user points from Redux state
+  const user = useSelector((state) => state.user.user); // Get user info from Redux state
+  const userPoints = useSelector((state) => state.user.points); // Get user points from Redux state
 
   useEffect(() => {
     // Ensure the Telegram Web App object is available
@@ -35,9 +35,6 @@ const Home = () => {
 
     // Initialize Web App with data from Telegram
     const telegramUser = tg.initDataUnsafe?.user || {};
-
-    // Set user from Telegram WebApp
-    dispatch(setUserInfo(telegramUser)); // Dispatch user data to Redux
 
     // Fetch user data from backend by telegramId
     if (telegramUser.id) {
@@ -59,15 +56,15 @@ const Home = () => {
       // Directly destructure properties from the response data
       const { points, firstName, lastName, username } = response.data;
 
-      // Update state with user information
-      dispatch(setUserInfo({
+      // Update Redux store with user information and points
+      dispatch(setUser({
         first_name: firstName,
         last_name: lastName,
         username: username,
         telegramId: telegramId
       }));
 
-      dispatch(setUserPoints(points)); // Dispatch points update to Redux
+      dispatch(setPoints(points)); // Dispatch points update to Redux
       console.log('Updated user points:', points); // Log points after update
     } catch (error) {
       console.error('Error fetching user data:', error); // Log any errors
