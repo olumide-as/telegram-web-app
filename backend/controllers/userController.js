@@ -22,7 +22,7 @@ exports.registerUser = async (req, res) => {
                 firstName,
                 lastName,
                 username,
-                points: 0,  // Initialize points (optional)
+                points: 0,  // Initialize points to 0
             });
 
             // Save the user to the database
@@ -52,11 +52,36 @@ exports.registerUser = async (req, res) => {
 // Function to get sorted users
 exports.getUsers = async (req, res) => {
     try {
-        // Fetch users sorted by firstName (you can change this to any field)
-        const users = await User.find().sort({ firstName: 1 });  // Ascending order
+        // Fetch users sorted by points in descending order
+        const users = await User.find().sort({ points: -1 });  // Sort by points (highest first)
         res.status(200).json(users);
     } catch (error) {
         console.error('Error fetching users:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+// Function to get a user by telegramId
+exports.getUserByTelegramId = async (req, res) => {
+    const { telegramId } = req.params;
+
+    try {
+        const user = await User.findOne({ telegramId });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Respond with user details
+        res.status(200).json({
+            telegramId: user.telegramId,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            points: user.points,
+        });
+    } catch (error) {
+        console.error('Error fetching user by telegramId:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
 };
