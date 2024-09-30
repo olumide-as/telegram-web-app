@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from 'axios'; // Import axios to fetch user data
 import {
   Button1,
   DailyTask,
@@ -20,20 +21,40 @@ import {
 
 const Home = () => {
   const [user, setUser] = useState({});
+  const [userPoints, setUserPoints] = useState(0); // New state for user's points
 
   useEffect(() => {
     // Ensure the Telegram Web App object is available
     const tg = window.Telegram.WebApp;
 
     // Log the raw Telegram user data
-    console.log('Telegram user data:', tg.initDataUnsafe?.user); // Add this line
+    console.log('Telegram user data:', tg.initDataUnsafe?.user); 
 
     // Initialize Web App with data from Telegram
-    setUser(tg.initDataUnsafe?.user || {});
+    const telegramUser = tg.initDataUnsafe?.user || {};
+
+    // Set user from Telegram WebApp
+    setUser(telegramUser);
+
+    // Fetch user data from backend by telegramId
+    if (telegramUser.id) {
+      fetchUserData(telegramUser.id); // Fetch user data if Telegram ID is available
+    }
 
     // Expand the Web App to full screen inside Telegram
     tg.expand();
   }, []);
+
+  // Function to fetch user data from the backend
+  const fetchUserData = async (telegramId) => {
+    try {
+      const response = await axios.get(`http://localhost:5001/api/users/${telegramId}`); // Use your actual backend URL
+      const { points } = response.data.user;
+      setUserPoints(points); // Update user's points from backend
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
 
   return (
     <div className="h-full py-8">
@@ -59,7 +80,7 @@ const Home = () => {
             <p>Welcome, guest!</p>
           )}
           <p className="text-2xl">
-            50,075 <span className="text-[#FEC95E]">$AIDOGS</span>
+            {userPoints} <span className="text-[#FEC95E]">$AIDOGS</span> {/* Display user's points */}
           </p>
         </div>
       </section>
