@@ -38,3 +38,4 @@ export const fetchUserByTelegramId = async (telegramId) => {
     throw error; // Re-throw or handle as needed
   }
 };
+

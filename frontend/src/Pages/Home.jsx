@@ -49,10 +49,20 @@ const Home = () => {
   const fetchUserData = async (telegramId) => {
     try {
       const response = await axios.get(`http://localhost:5001/api/users/${telegramId}`); // Use your actual backend URL
-      const { points } = response.data.user;
+      
+      // Log the entire response for debugging
+      console.log('User data response:', response.data);
+      
+      const user = response.data.user; // Extract the user object
+      if (!user) {
+        throw new Error('User data is undefined'); // Handle case where user is not found
+      }
+
+      const { points } = user; // Destructure points from user
       setUserPoints(points); // Update user's points from backend
+      console.log('Updated user points:', points); // Log points after update
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error('Error fetching user data:', error); // Log any errors
     }
   };
 
@@ -185,7 +195,7 @@ const Home = () => {
         />
       </section>
 
-      <UserList/>
+      <UserList />
     </div>
   );
 };
