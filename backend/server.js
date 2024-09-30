@@ -1,5 +1,4 @@
 // backend/server.js
-
 const express = require('express');
 const cors = require('cors'); // Import the cors module for handling CORS
 const userRoutes = require('./routes/userRoutes');
@@ -8,8 +7,15 @@ const mongoose = require('mongoose'); // Import mongoose for connection handling
 
 const app = express();
 
+// CORS configuration
+const corsOptions = {
+  origin: 'https://telegram-web-app-mocha.vercel.app', // Allow only your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  credentials: true, // Allow credentials (if needed)
+};
+
 // Middleware to parse incoming JSON requests
-app.use(cors()); // Enable CORS for all routes
+app.use(cors(corsOptions)); // Enable CORS with specified options
 app.use(express.json()); // Middleware to parse JSON body
 
 // Routes
