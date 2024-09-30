@@ -1,7 +1,7 @@
 // backend/routes/userRoutes.js
 
 const express = require('express');
-const { registerUser, getUsers } = require('../controllers/userController');
+const { registerUser, getUsers, getUserByTelegramId } = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -9,6 +9,9 @@ const router = express.Router();
 router.post('/register', registerUser);
 
 // GET route to fetch sorted users
-router.get('/', getUsers);  // Add this line for fetching users
+router.get('/', getUsers);
+
+// GET route to fetch user by telegramId
+router.get('/:telegramId', getUserByTelegramId); // Add this line for fetching user by telegramId
 
 module.exports = router;
